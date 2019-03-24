@@ -65,7 +65,7 @@
               * BEGIN add by zhuj,20190321
               **/            
             if (empty($object->assignedTo))                 return false;           //如果没有指派人，不通知
-            //if ($object->assignedTo == $action->actor)      return false;           //如果指派人与操作人为同一个人，不通知   (暂时不限制)       
+            if ($object->assignedTo == $action->actor)      return false;           //如果指派人与操作人为同一个人，不通知        
             //Todo：指派人会不会有多个？  ==貌似禅道里只会记录第一个人
             //查询指派人查询禅道中配置的邮箱地址
             $tmpUser   = $this->dao->select('*')->from('zt_user')->where('account')->eq($object->assignedTo)->fetch();
